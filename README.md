@@ -46,6 +46,8 @@ CREATE TABLE Employees (
     FOREIGN KEY (DepartmentId) REFERENCES Departments(Id)
 );
 ```
+
+![Схема базы данных](image.png)
 ## Пример заполнения данных
 
 ### Вставка данных
