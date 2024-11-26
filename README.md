@@ -24,25 +24,25 @@
 # Шаг 2: Проектирование и создание таблиц
 
 ## Выбор СУБД
-**СУБД**: Microsoft SQL Server
+**СУБД**: SQLite
 
 ## Схема БД
 
 ```sql
 CREATE TABLE Departments (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    Name NVARCHAR(100) NOT NULL,
-    Location NVARCHAR(100) NOT NULL,
-    Budget DECIMAL(18, 2) NOT NULL
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT NOT NULL,
+    Location TEXT NOT NULL,
+    Budget REAL NOT NULL
 );
 
 CREATE TABLE Employees (
-    Id INT PRIMARY KEY IDENTITY(1,1),
-    FirstName NVARCHAR(50) NOT NULL,
-    LastName NVARCHAR(50) NOT NULL,
-    DepartmentId INT,
+    Id INTEGER PRIMARY KEY AUTOINCREMENT,
+    FirstName TEXT NOT NULL,
+    LastName TEXT NOT NULL,
+    DepartmentId INTEGER,
     HireDate DATE NOT NULL,
-    Salary DECIMAL(18, 2) NOT NULL,
+    Salary REAL NOT NULL,
     FOREIGN KEY (DepartmentId) REFERENCES Departments(Id)
 );
 ```
@@ -54,12 +54,12 @@ CREATE TABLE Employees (
 
 ```sql
 INSERT INTO Departments (Name, Location, Budget) VALUES
-(N'Отдел продаж', N'Минск', 150000.00),
-(N'Отдел разработки', N'Гомель', 200000.00),
-(N'Отдел маркетинга', N'Витебск', 100000.00);
+('Отдел продаж', 'Минск', 150000.00),
+('Отдел разработки', 'Гомель', 200000.00),
+('Отдел маркетинга', 'Витебск', 100000.00);
 
 INSERT INTO Employees (FirstName, LastName, DepartmentId, HireDate, Salary) VALUES
-(N'Иван', N'Иванов', 1, '2020-02-15', 50000.00),
-(N'Мария', N'Петрова', 2, '2019-06-01', 60000.00),
-(N'Александр', N'Сидоров', 1, '2021-08-20', 55000.00);
+('Иван', 'Иванов', 1, '2020-02-15', 50000.00),
+('Мария', 'Петрова', 2, '2019-06-01', 60000.00),
+('Александр', 'Сидоров', 1, '2021-08-20', 55000.00);
 ```
