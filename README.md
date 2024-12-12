@@ -13,13 +13,13 @@
 - **LastName** (nvarchar(50)) — Фамилия сотрудника.
 - **DepartmentId** (int, Foreign Key) — Идентификатор отдела из справочника отделов.
 - **HireDate** (date) — Дата приема на работу.
-- **Salary** (decimal(18, 2)) — Зарплата сотрудника.
+- **Salary** (FLOAT) — Зарплата сотрудника.
 
 ### Справочник отделов (Departments):
 - **Id** (int, Primary Key) — Уникальный идентификатор отдела.
 - **Name** (nvarchar(100)) — Наименование отдела.
 - **Location** (nvarchar(100)) — Местоположение отдела.
-- **Budget** (decimal(18, 2)) — Бюджет отдела.
+- **Budget** (FLOAT) — Бюджет отдела.
 
 ### Связи
 - `DepartmentId` в `Employees` ссылается на `Id` в `Departments`.
@@ -37,7 +37,7 @@ CREATE TABLE Departments (
     Id INTEGER PRIMARY KEY AUTOINCREMENT,
     Name TEXT NOT NULL,
     Location TEXT NOT NULL,
-    Budget REAL NOT NULL
+    Budget FLOAT NOT NULL
 );
 
 CREATE TABLE Employees (
@@ -46,7 +46,7 @@ CREATE TABLE Employees (
     LastName TEXT NOT NULL,
     DepartmentId INTEGER,
     HireDate DATE NOT NULL,
-    Salary REAL NOT NULL,
+    Salary FLOAT NOT NULL,
     FOREIGN KEY (DepartmentId) REFERENCES Departments(Id)
 );
 ```
